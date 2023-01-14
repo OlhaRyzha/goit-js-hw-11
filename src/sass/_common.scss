@@ -1,1 +1,93 @@
 @import '~node_modules/modern-normalize/modern-normalize.css';
+body{
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.search-form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: 40px;
+  @media screen and (min-width: 768px) {
+    gap: 25px;
+  }
+
+  & input{
+    width: 250px;
+    height: 50px;
+    outline-color: lightgray;
+    border-radius: 8px;
+    border: 1px solid lightslategrey;
+    padding-left: 15px;
+  }
+  & button{
+    height: 50px;
+    width: 100px;
+    border-radius: 8px;
+    border: 2px solid rgb(206, 210, 214);
+    font-family: 'Roboto', sans-serif;
+    color: gray;
+    box-shadow: inset 6px 6px 65px -27px rgba(128,128,128,1);
+    cursor: pointer;
+  }
+}
+.gallery{
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  width: 100%;
+}
+.photo-card{
+  width: 100%;
+  min-width: 200px;
+  border: 1px solid rgba(209, 206, 206, 0.87);
+  border-radius: 4px;
+  transition: all 3 ease-in-out;
+  @media screen and (min-width: 768px) {
+    width: calc(100% / 3 - 30px);
+  }
+}
+.photo-card:hover{
+scale: 1.08;
+box-shadow: 1px 1px 22px 8px rgba(209,198,209,1);
+
+}
+.gallery__item img{
+  width: 100%;
+  height: 300px;
+  @media screen and (min-width: 768px) {
+    height: 200px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    height: 350px;
+
+  }
+}
+.info{
+  background-color: #fff;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.load-more{
+  margin: 0 auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding: 15px 20px;
+  border-radius: 8px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Roboto', sans-serif;
+  color: gray;
+  box-shadow: inset 6px 6px 65px -27px rgba(128,128,128,1);
+  cursor: pointer;
+}
+.is-hidden{
+  display: none;
+}
