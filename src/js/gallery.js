@@ -13,7 +13,7 @@ const formForSearchImg = document.querySelector('#search-form');
 const btnForOpeningNewImg = document.querySelector('.load-more');
 const galleryEl = document.querySelector('.gallery');
 const cardEl = document.querySelector('.photo-card');
-var lightbox = new SimpleLightbox('.photo-card a');
+const lightbox = new SimpleLightbox('.photo-card a');
 
 
 const pixabayAPI = new PixabayAPI();
@@ -63,7 +63,7 @@ const onSearchFormSubmit = async event => {
         return;
       }
     }
-    lightbox = new SimpleLightbox('.photo-card a');
+    lightbox.refresh();
   } catch (error) {
     console.log(error.message);
   }
