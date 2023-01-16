@@ -13,6 +13,8 @@ const formForSearchImg = document.querySelector('#search-form');
 const btnForOpeningNewImg = document.querySelector('.load-more');
 const galleryEl = document.querySelector('.gallery');
 const cardEl = document.querySelector('.photo-card');
+var lightbox = new SimpleLightbox('.photo-card a');
+
 
 const pixabayAPI = new PixabayAPI();
 
@@ -61,16 +63,16 @@ const onSearchFormSubmit = async event => {
         return;
       }
     }
-    var lightbox = new SimpleLightbox('.photo-card a');
+    lightbox = new SimpleLightbox('.photo-card a');
   } catch (error) {
     console.log(error.message);
   }
 };
 
 const onLoadMoreBtnClick = async event => {
-  event.target.disabled = true;
+
   pixabayAPI.page += 1;
-  event.target.disabled = false;
+
   try {
     const data = await pixabayAPI.fetchPhotosByQuery();
     galleryEl.insertAdjacentHTML('beforeend', createGalleryCards(data.hits));
@@ -83,9 +85,7 @@ const onLoadMoreBtnClick = async event => {
         return;
       }
     }
-    var lightbox = new SimpleLightbox('.photo-card a');
-
-    lightbox.refresh();
+   lightbox.refresh();
 
     const { height: cardHeight } =
       galleryEl.firstElementChild.getBoundingClientRect();
@@ -94,10 +94,7 @@ const onLoadMoreBtnClick = async event => {
       top: cardHeight * 2,
       behavior: 'smooth',
     });
-    if (
-      Number((data.totalHits / pixabayAPI.per_page).toFixed()) ===
-      pixabayAPI.page
-    ) {
+    if (data.hits.length === 0) {
       btnForOpeningNewImg.classList.add('is-hidden');
       Notify.info("We're sorry, but you've reached the end of search results.");
     }
