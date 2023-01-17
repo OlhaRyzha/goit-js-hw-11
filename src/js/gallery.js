@@ -28,7 +28,7 @@ const onSearchFormSubmit = async event => {
   
 
   try {
-    const data = await pixabayAPI.fetchPhotosByQuery();
+    const {data} = await pixabayAPI.fetchPhotosByQuery();
     const { hits, totalHits } = data;
 
     if (pixabayAPI.query.length === 0) {
@@ -74,7 +74,7 @@ const onLoadMoreBtnClick = async event => {
   pixabayAPI.page += 1;
 
   try {
-    const data = await pixabayAPI.fetchPhotosByQuery();
+    const {data} = await pixabayAPI.fetchPhotosByQuery();
     galleryEl.insertAdjacentHTML('beforeend', createGalleryCards(data.hits));
 
     galleryEl.addEventListener('click', onLinkClick);
